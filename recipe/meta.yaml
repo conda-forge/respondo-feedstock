@@ -1,5 +1,5 @@
 {% set name = "respondo" %}
-{% set version = "0.0.5" %}
+{% set version = "0.0.6" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/gator-program/respondo/archive/v{{ version }}.tar.gz
-  sha256: 6986efafcef0e25d772031fa0cdc464c126864b0ea59c53aba1470a21685152d
+  sha256: da8d13a533140f7d249665ce32e69a35b6e151fda51542baab07be0e0213334f
 
 build:
   noarch: python
