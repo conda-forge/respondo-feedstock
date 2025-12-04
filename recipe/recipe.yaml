@@ -30,12 +30,8 @@ tests:
   - python:
       imports:
         - respondo
+      pip_check: true
       python_version: ${{ python_min }}.*
-  - script:
-      - pip check
-    requirements:
-      run:
-        - pip
 
 about:
   homepage: https://github.com/gator-program/respondo
