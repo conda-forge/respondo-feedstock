@@ -1,43 +1,42 @@
-{% set name = "respondo" %}
-{% set version = "0.0.6" %}
+context:
+  name: respondo
+  version: 0.0.6
 
 package:
-  name: {{ name|lower }}
-  version: {{ version }}
+  name: ${{ name|lower }}
+  version: ${{ version }}
 
 source:
-  url: https://github.com/gator-program/respondo/archive/v{{ version }}.tar.gz
+  url: https://github.com/gator-program/respondo/archive/v${{ version }}.tar.gz
   sha256: da8d13a533140f7d249665ce32e69a35b6e151fda51542baab07be0e0213334f
 
 build:
   noarch: python
-  script: {{ PYTHON }} -m pip install . -vv --no-deps
+  script: ${{ PYTHON }} -m pip install . -vv --no-deps
   number: 0
 
 requirements:
   host:
-    - python >=3.7
+    - python ${{ python_min }}.*
     - setuptools >=61.0
     - versioningit >=2.0,<3.dev0
     - pip
   run:
-    - python >=3.7
+    - python >=${{ python_min }}
     - numpy >=1.14
     - adcc >=0.16.0
 
-test:
-  imports:
-    - respondo
-  commands:
-    - pip check
-  requires:
-    - pip
+tests:
+  - python:
+      imports:
+        - respondo
+      pip_check: true
+      python_version: ${{ python_min }}.*
 
 about:
-  home: https://github.com/gator-program/respondo
+  homepage: https://github.com/gator-program/respondo
   summary: Library for evaluating response functions for molecular properties
   license: GPL-3.0-or-later
-  license_family: GPL3
   license_file: LICENSE
 
 extra:
